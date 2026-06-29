@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estrutura - Escola Sementinha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#f4fff5;
+      color:#1e1e1e;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+
+    header{
+      width:100%;
+      height:60vh;
+      background:linear-gradient(135deg,#1c7a35,#5fd57e);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero{
+      color:white;
+      animation:subir 1.2s ease;
+    }
+
+    .hero h1{
+      font-size:65px;
+      margin-bottom:20px;
+      text-shadow:0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    .hero p{
+      font-size:22px;
+      max-width:800px;
+      line-height:1.7;
+    }
+
+    section{
+      padding:90px 10%;
+    }
+
+    .titulo{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .titulo h2{
+      font-size:45px;
+      color:#1b6d31;
+      margin-bottom:15px;
+    }
+
+    .titulo p{
+      color:#666;
+      font-size:18px;
+    }
+
+    .cards{
+      display:grid;
+      /* Ajustado o minmax para 280px para evitar quebras em telas pequenas */
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:35px;
+    }
+
+    .card{
+      background:white;
+      border-radius:30px;
+      overflow:hidden; /* Garante que nada (inclusive imagens) saia das bordas arredondadas */
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      transition:0.5s;
+      animation:surgir 1s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-10px) scale(1.02);
+      box-shadow:0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .foto{
+      width:100%;
+      height:240px;
+      background:#d9f8e1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#2e9b47;
+      font-size:24px;
+      font-weight:600;
+      overflow:hidden; /* Impede que imagens grandes vazem */
+      position:relative;
+    }
+
+    /* Regra essencial para quando você colocar as tags <img> reais */
+    .foto img{
+      width:100%;
+      height:100%;
+      object-fit:cover; /* Corta e encaixa a foto sem distorcer */
+      position:absolute;
+      top:0;
+      left:0;
+    }
+
+    .conteudo{
+      padding:30px;
+    }
+
+    .conteudo h3{
+      color:#1c7a35;
+      margin-bottom:15px;
+      font-size:30px;
+    }
+
+    .conteudo p{
+      color:#555;
+      line-height:1.8;
+      font-size:16px;
+    }
+
+    .comentarios{
+      margin-top:80px;
+      background:white;
+      padding:50px;
+      border-radius:35px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      animation:surgir 1s ease;
+    }
+
+    .comentarios h2{
+      color:#1b6d31;
+      font-size:40px;
+      margin-bottom:20px;
+      text-align:center;
+    }
+
+    .comentarios p{
+      text-align:center;
+      color:#666;
+      margin-bottom:40px;
+    }
+
+    form{
+      display:flex;
+      flex-direction:column;
+      gap:20px;
+    }
+
+    input,
+    textarea{
+      width:100%;
+      padding:18px;
+      border:none;
+      border-radius:18px;
+      background:#eefaf0;
+      outline:none;
+      font-size:16px;
+      transition:0.3s;
+    }
+
+    input:focus,
+    textarea:focus{
+      background:#e2f8e7;
+      box-shadow:0 0 0 3px rgba(46,155,71,0.2);
+    }
+
+    textarea{
+      resize:none;
+      min-height:180px;
+    }
+
+    button{
+      padding:18px;
+      border:none;
+      border-radius:50px;
+      background:#2e9b47;
+      color:white;
+      font-size:18px;
+      font-weight:600;
+      cursor:pointer;
+      transition:0.4s;
+      box-shadow:0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    button:hover{
+      transform:scale(1.05);
+      background:#1b6d31;
+    }
+
+    .comentario-box{
+      margin-top:50px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:25px;
+    }
+
+    .comentario{
+      background:#f4fff5;
+      border-left:6px solid #2e9b47;
+      padding:25px;
+      border-radius:20px;
+      transition:0.4s;
+    }
+
+    .comentario:hover{
+      transform:translateY(-5px);
+    }
+
+    .comentario h4{
+      color:#1b6d31;
+      margin-bottom:10px;
+      font-size:22px;
+    }
+
+    .comentario p{
+      text-align:left;
+      margin:0;
+      line-height:1.7;
+      color:#555;
+    }
+
+    footer{
+      background:#145526;
+      color:white;
+      text-align:center;
+      padding:40px 20px;
+      margin-top:80px;
+    }
+
+    footer h3{
+      font-size:30px;
+      margin-bottom:10px;
+    }
+
+    @keyframes surgir{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes subir{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:768px){
+      /* Ajuste de padding lateral para telas menores não espremerem os cards */
+      section{
+        padding:60px 5%;
+      }
+
+      .hero h1{
+        font-size:45px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .titulo h2{
+        font-size:35px;
+      }
+
+      .comentarios{
+        padding:30px;
+      }
+
+      .comentarios h2{
+        font-size:32px;
+      }
+
+    }
+
+  </style>
+</head>
+<body>
+
+  <header>
+
+    <div class="hero">
+
+      <h1>Nossa Estrutura</h1>
+
+      <p>
+        Um ambiente preparado com carinho, segurança e qualidade para oferecer a melhor experiência aos nossos alunos.
+      </p>
+
+    </div>
+
+  </header>
+
+  <section>
+
+    <div class="titulo">
+
+      <h2>Conheça nossos espaços</h2>
+
+      <p>
+        Adicione fotos e informações sobre cada ambiente da escola.
+      </p>
+
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+
+        <div class="foto">
+        <img src="saladeaulas.jpeg" alt="Salas de Aulas">
+          </div>
+
+        <div class="conteudo">
+
+          <h3>Salas Modernas</h3>
+
+          <p>
+            Salas organizadas, climatizadas e preparadas para proporcionar conforto e aprendizado aos alunos.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="foto"> 
+      <img src="brinquedoteca.jpeg" alt="Brinquedoteca">
+        </div>
+
+        <div class="conteudo">
+
+          <h3>Brinquedoteca</h3>
+
+          <p>
+            Espaço dedicado à brincadeira, e brinquedos para as atividades de aprendizado da criatividade e imaginação dos estudantes.
+          </p>
+
+        </div>
+
+      </div>
+
+      <div class="card">
+
+        <div class="foto">
+          <img src="brinquedos.jpeg" alt="Brinquedos">
+        </div>
+
+        <div class="conteudo">
+
+          <h3>Área Recreativa</h3>
+
+          <p>
+            Ambientes seguros e divertidos para recreação, socialização e momentos especiais entre os alunos.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="comentarios">
+
+      <h2>Comentários dos Pais</h2>
+
+      <p>
+        Espaço para os responsáveis deixarem opiniões e experiências sobre a escola.
+      </p>
+
+      <form>
+
+        <input type="text" placeholder="Nome dos responsáveis">
+
+        <textarea placeholder="Escreva um comentário..."></textarea>
+
+        <button type="submit">Enviar Comentário</button>
+
+      </form>
+
+      <div class="comentario-box">
+
+        <div class="comentario">
+
+          <h4>Família Cabral</h4>
+
+          <p>
+            Estamos muito felizes com o desenvolvimento do nosso filho. A escola é acolhedora e possui profissionais incríveis.
+          </p>
+
+        </div>
+
+        <div class="comentario">
+
+          <h4>Família Nunes</h4>
+
+          <p>
+            Excelente estrutura e ensino de qualidade. Nosso filho ama participar das atividades da escola.
+          </p>
+
+        </div>
+
+        <div class="comentario">
+
+          <h4>Família Martins</h4>
+
+          <p>
+            Ambiente seguro, organizado e cheio de carinho com as crianças. Recomendamos muito a Sementinha.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+
+    <h3>Escola Sementinha</h3>
+
+    <p>
+      Educação que transforma vidas 🌱
+    </p>
+
+  </footer>
+
+</body>
+</html>

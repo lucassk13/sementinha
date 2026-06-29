@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ensino - Escola Sementinha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#f4fff5;
+      color:#1e1e1e;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+
+    header{
+      width:100%;
+      height:60vh;
+      background:linear-gradient(135deg,#1b6d31,#61d882);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero{
+      color:white;
+      animation:subir 1.2s ease;
+    }
+
+    .hero h1{
+      font-size:65px;
+      margin-bottom:20px;
+      text-shadow:0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    .hero p{
+      font-size:22px;
+      max-width:850px;
+      line-height:1.8;
+    }
+
+    section{
+      padding:90px 10%;
+    }
+
+    .titulo{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .titulo h2{
+      font-size:45px;
+      color:#1b6d31;
+      margin-bottom:15px;
+    }
+
+    .titulo p{
+      color:#666;
+      font-size:18px;
+    }
+
+    .cards{
+      display:grid;
+      /* Ajustado de 300px para 280px para dar mais folga em telas menores */
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:35px;
+    }
+
+    .card-metodologia{
+      background:white;
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      transition:0.5s;
+      animation:surgir 1s ease;
+    }
+
+    .card-metodologia:hover{
+      transform:translateY(-10px) scale(1.02);
+      box-shadow:0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    /* Modificações de segurança para travar os limites das fotos */
+    .container-foto-card {
+      width: 100%;
+      height: 240px; 
+      border-top-left-radius: 30px;  
+      border-top-right-radius: 30px; 
+      overflow: hidden; 
+      position: relative; /* Garante estabilidade de posicionamento */
+    }
+
+    .foto-card {
+      width: 100%;
+      height: 100%;
+      max-width: 100%; /* Impede o vazamento horizontal */
+      max-height: 100%; /* Impede o vazamento vertical */
+      object-fit: cover;     
+      object-position: center; 
+      display: block;        
+    }
+
+    .conteudo-card{
+      padding:30px;
+    }
+
+    .conteudo-card h3{
+      color:#1b6d31;
+      margin-bottom:15px;
+      font-size:30px;
+    }
+
+    .conteudo-card p{
+      color:#555;
+      line-height:1.8;
+      font-size:16px;
+    }
+
+    .destaque{
+      margin-top:90px;
+      background:linear-gradient(135deg,#2e9b47,#61d882);
+      border-radius:40px;
+      padding:60px;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:50px;
+      flex-wrap:wrap;
+      animation:surgir 1s ease;
+      box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .texto{
+      flex:1;
+      min-width:300px;
+    }
+
+    .texto h2{
+      font-size:50px;
+      margin-bottom:20px;
+    }
+
+    .texto p{
+      line-height:1.9;
+      font-size:19px;
+    }
+
+    .container-foto {
+      flex: 1;
+      min-width: 300px;
+      height: 350px;         
+      border-radius: 30px;   
+      overflow: hidden;      
+      border: 3px dashed #ffffff; 
+    }
+
+    .foto-destaque {
+      width: 100%;           
+      height: 100%;          
+      object-fit: cover;     
+      object-position: center; 
+    }
+
+    .beneficios{
+      margin-top:90px;
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+      gap:30px;
+    }
+
+    .beneficio{
+      background:white;
+      padding:35px;
+      border-radius:30px;
+      text-align:center;
+      box-shadow:0 10px 25px rgba(0,0,0,0.08);
+      transition:0.5s;
+      animation:surgir 1s ease;
+    }
+
+    .beneficio:hover{
+      transform:translateY(-10px);
+    }
+
+    .beneficio h3{
+      color:#1b6d31;
+      margin-bottom:15px;
+      font-size:28px;
+    }
+
+    .beneficio p{
+      color:#555;
+      line-height:1.8;
+    }
+
+    footer{
+      background:#145526;
+      color:white;
+      text-align:center;
+      padding:40px 20px;
+      margin-top:90px;
+    }
+
+    footer h3{
+      font-size:30px;
+      margin-bottom:10px;
+    }
+
+    @keyframes surgir{
+      from{
+        opacity:0;
+        transform:translateY(40px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @keyframes subir{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media(max-width:768px){
+      section{
+        padding:60px 5%; /* Mais espaço nas laterais em telas menores */
+      }
+      .hero h1{
+        font-size:45px;
+      }
+      .hero p{
+        font-size:18px;
+      }
+      .titulo h2{
+        font-size:35px;
+      }
+      .texto h2{
+        font-size:35px;
+      }
+      .destaque{
+        padding:35px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hero">
+      <h1>Nosso Ensino</h1>
+      <p>
+        A Escola Sementinha oferece um ensino de excelência, unindo aprendizado, valores, criatividade e desenvolvimento completo para preparar nossos alunos para o futuro.
+      </p>
+    </div>
+  </header>
+
+  <section>
+    <div class="titulo">
+      <h2>Metodologia de Alto Nível</h2>
+      <p>
+        Educação moderna, acolhedora e preparada para desenvolver o máximo potencial de cada aluno.
+      </p>
+    </div>
+
+    <div class="cards">
+      
+      <div class="card-metodologia">
+        <div class="container-foto-card">
+          <img src="aulas.jpeg" alt="Ensino de Excelência" class="foto-card">
+        </div>
+        <div class="conteudo-card">
+          <h3>Ensino de Excelência</h3>
+          <p>
+            Nossa metodologia trabalha o desenvolvimento intelectual, emocional e social dos alunos de forma dinâmica e eficiente. Cada aula é planejada para estimular o aprendizado com criatividade, participação e dedicação.
+          </p>
+        </div>
+      </div>
+
+      <div class="card-metodologia">
+        <div class="container-foto-card">
+          <img src="ingles.jpeg" alt="Inglês Todos os Dias" class="foto-card">
+        </div>
+        <div class="conteudo-card">
+          <h3>Inglês Todos os Dias</h3>
+          <p>
+            A Escola Sementinha possui aulas de inglês diariamente, proporcionando contato constante com o idioma e preparando os alunos para um futuro com mais oportunidades e confiança.
+          </p>
+        </div>
+      </div>
+
+      <div class="card-metodologia">
+        <div class="container-foto-card">
+          <img src="alemdeaulas.jpg" alt="Desenvolvimento Completo" class="foto-card">
+        </div>
+        <div class="conteudo-card">
+          <h3>Desenvolvimento Completo</h3>
+          <p>
+            Além das disciplinas tradicionais, nossos alunos participam de atividades que desenvolvem disciplina, coordenação, criatividade e expressão artística.
+          </p>
+        </div>
+      </div>
+
+    </div> 
+    
+    <div class="destaque">
+      <div class="texto">
+        <h2>Educação que vai além da sala de aula</h2>
+        <p>
+          Acreditamos que uma educação de qualidade precisa formar alunos preparados para a vida. Por isso, oferecemos um ambiente acolhedor, inovador e cheio de oportunidades para o crescimento pessoal e acadêmico.
+          <br><br>
+          Nosso ensino incentiva a autonomia, o respeito, a criatividade e a busca constante pelo conhecimento, tornando o aprendizado muito mais significativo e especial.
+        </p>
+      </div>
+
+      <div class="container-foto">
+        <img src="balett.jpg" alt="Foto da escola" class="foto-destaque">
+      </div>
+    </div>
+
+    <div class="beneficios">
+      <div class="beneficio">
+        <h3>🎵 Música</h3>
+        <p>Aulas que estimulam a criatividade, coordenação e sensibilidade artística dos alunos.</p>
+      </div>
+
+      <div class="beneficio">
+        <h3>🥋 Artes Marciais</h3>
+        <p>Desenvolvimento da disciplina, respeito, concentração e autoconfiança através do esporte.</p>
+      </div>
+
+      <div class="beneficio">
+        <h3>🩰 Balé</h3>
+        <p>Atividades que incentivam expressão corporal, postura, equilíbrio e dedicação.</p>
+      </div>
+
+      <div class="beneficio">
+        <h3>📚 Ensino Tradicional</h3>
+        <p>Português, matemática, ciências, história e todas as disciplinas fundamentais com ensino de alto nível.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <h3>Escola Sementinha</h3>
+    <p>Educação que transforma vidas 🌱</p>
+  </footer>
+
+</body>
+</html>

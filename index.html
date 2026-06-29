@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sementinha- Website</title>
+    <style>
+        /* CONFIGURAÇÕES GERAIS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            color: #333;
+            background-color: #ffffff;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 1. CABEÇALHO / NAVBAR */
+        header {
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .logo-placeholder {
+            width: 40px;
+            height: 40px;
+            background: #4caf50;
+            border-radius: 5px;
+        }
+        .logo-text h1 {
+            font-size: 16px;
+            color: #2e7d32;
+            text-transform: uppercase;
+        }
+        .logo-text p {
+            font-size: 11px;
+            color: #666;
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover, nav ul li a.active {
+            color: #4caf50;
+        }
+        .btn-matricula {
+            background-color: #2e7d32;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        .btn-matricula:hover {
+            background-color: #1b5e20;
+        }
+
+        /* 2. TOPO INTRODUÇÃO (HERO SECTION) */
+        .topo-introducao {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 50px;
+            padding: 60px 10%;
+            background-color: #f9f9f9;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        .topo-texto {
+            flex: 1;
+        }
+        .topo-texto h1 {
+            font-size: 40px;
+            color: #333;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+        .topo-texto .verde-destaque {
+            color: #2e7d32;
+        }
+        .topo-texto p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        .btn-verde {
+            display: inline-block;
+            background-color: #2e7d32;
+            color: white !important;
+            text-decoration: none;
+            padding: 12px 28px;
+            font-weight: bold;
+            border-radius: 6px;
+            text-transform: uppercase;
+        }
+        .topo-imagem-container {
+            flex: 1;
+            max-width: 500px;
+            height: 350px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .topo-foto {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            display: block;
+        }
+
+        /* 3. SEÇÃO DE TÓPICOS / RECURSOS */
+        .topics-section {
+            padding: 80px 0;
+        }
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        /* Container das fotos de cada tópico */
+        .container-foto-topico {
+            width: 100% !important;
+            height: 220px !important;
+            background-color: #e0e0e0;
+            border-radius: 12px !important;
+            overflow: hidden !important;
+            display: block;
+            margin-bottom: 15px;
+        }
+        .foto-topico {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            object-position: center !important;
+            display: block !important;
+        }
+        .conteudo-topico h3 {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        .conteudo-topico p {
+            font-size: 13px;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        /* 4. CONTADOR / ESTATÍSTICAS */
+        .stats-section {
+            background-color: #f5f5f5;
+            padding: 30px 0;
+            border-top: 1px solid #e0e0e0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+        }
+        .stat-item {
+            border-right: 1px solid #dddddd;
+            padding: 10px;
+        }
+        .stat-item:last-child {
+            border-right: none;
+        }
+        .stat-number {
+            font-size: 28px;
+            font-weight: bold;
+            color: #2e7d32;
+        }
+        .stat-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* RESPONSIVIDADE BÁSICA */
+        @media (max-width: 960px) {
+            .topo-introducao, .topics-grid, .stats-grid {
+                grid-template-columns: 1fr;
+                flex-direction: column;
+            }
+            .stat-item {
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                padding: 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo-area">
+                <div class="logo-placeholder"></div>
+                <div class="logo-text">
+                    <h1>Sementinha</h1>
+                    <p>Educação que transforma vidas 🌱</p>
+                </div>
+            </div>
+            
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="active">Início</a></li>
+                    <li><a href="sobre.html">Sobre</a></li>
+                    <li><a href="ensino.html">Ensino</a></li>
+                    <li><a href="estrutura.html">Estrutura</a></li>
+                    <li><a href="atividades.html">Atividades</a></li>
+                    <li><a href="noticias.html">Notícias</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+
+            <a href="#" class="btn-matricula">MATRÍCULAS FECHADAS</a>
+        </div>
+    </header>
+
+    <section class="topo-introducao">
+        <div class="topo-texto">
+            <h1>BEM-VINDO À <br><span class="verde-destaque">Escola Sementinha</span></h1>
+            <p>A nossa missão é oferecer um ensino de qualidade, com foco no desenvolvimento integral dos alunos.</p>
+            <a href="#" class="btn-verde">SAIBA MAIS</a>
+        </div>
+
+        <div class="topo-imagem-container">
+            <img src="foradaescola.jpg.jpg" alt="Escola Sementinha" class="topo-foto">
+        </div>
+    </section>
+
+    <section class="topics-section">
+        <div class="container topics-grid">
+            
+            <div class="bloco-item">
+                <div class="container-foto-topico">
+                    <img src="turma.jpg" alt="Ensino de Qualidade" class="foto-topico">
+                </div>
+                <div class="conteudo-topico">
+                    <h3>✓ ENSINO DE QUALIDADE</h3>
+                    <p>Na nossa escola, acreditamos que a educação vai muito além...</p>
+                </div>
+            </div>
+
+            <div class="bloco-item">
+                <div class="container-foto-topico">
+                    <img src="estrutura.jpeg" alt="Estrutura Completa" class="foto-topico">
+                </div>
+                <div class="conteudo-topico">
+                    <h3>✓ ESTRUTURA COMPLETA</h3>
+                    <p>Nossa escola conta com uma estrutura moderna...</p>
+                </div>
+            </div>
+
+            <div class="bloco-item">
+                <div class="container-foto-topico">
+                    <img src="atividadescomsantana.jpg" alt="Atividades Extra" class="foto-topico">
+                </div>
+                <div class="conteudo-topico">
+                    <h3>✓ ATIVIDADES EXTRA</h3>
+                    <p>Além das aulas regulares, oferecemos atividades extras...</p>
+                </div>
+            </div>
+
+            <div class="bloco-item">
+                <div class="container-foto-topico">
+                    <img src="atividadepintar.jpg" alt="Formação de Valores" class="foto-topico">
+                </div>
+                <div class="conteudo-topico">
+                    <h3>✓ FORMAÇÃO DE VALORES</h3>
+                    <p>Acreditamos que educar vai além do conteúdo escolar...</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">100+</div>
+                <div class="stat-label">Alunos</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Anos de História</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-number">15+</div>
+                <div class="stat-label">Professores</div>
+            </div>
+
+            <div class="stat-item">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Prêmios</div>
+            </div>
+        </div>
+    </section>
+
+</body>
+</html>

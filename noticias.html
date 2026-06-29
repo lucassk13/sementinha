@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notícias - Escola Sementinha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#f4fff5;
+      color:#1e1e1e;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+
+    header{
+      width:100%;
+      height:60vh;
+      background:linear-gradient(135deg,#1c7a35,#5fd57e);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero{
+      color:white;
+      animation:subir 1.2s ease;
+    }
+
+    .hero h1{
+      font-size:65px;
+      margin-bottom:20px;
+      text-shadow:0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    .hero p{
+      font-size:22px;
+      max-width:800px;
+      line-height:1.8;
+    }
+
+    section{
+      padding:90px 10%;
+    }
+
+    .titulo{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .titulo h2{
+      font-size:45px;
+      color:#1b6d31;
+      margin-bottom:15px;
+    }
+
+    .titulo p{
+      color:#666;
+      font-size:18px;
+    }
+
+    .noticias{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+      gap:35px;
+    }
+
+    .noticia{
+      background:white;
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      transition:0.5s;
+      animation:surgir 1s ease;
+    }
+
+    .noticia:hover{
+      transform:translateY(-10px) scale(1.02);
+      box-shadow:0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .foto {
+      width:100%;
+      height:240px;
+      background:#d9f8e1;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#2e9b47;
+      font-size:24px;
+      font-weight:600;
+      overflow: hidden; /* Evita que a foto morda os cantos arredondados */
+    }
+
+    .conteudo{
+      padding:30px;
+    }
+
+    .data{
+      background:#2e9b47;
+      color:white;
+      display:inline-block;
+      padding:8px 18px;
+      border-radius:30px;
+      font-size:14px;
+      margin-bottom:20px;
+    }
+
+    .conteudo h3{
+      color:#1b6d31;
+      font-size:30px;
+      margin-bottom:15px;
+    }
+
+    .conteudo p{
+      color:#555;
+      line-height:1.8;
+      font-size:16px;
+    }
+
+    .destaque{
+      margin-top:90px;
+      background:linear-gradient(135deg,#2e9b47,#61d882);
+      border-radius:40px;
+      padding:60px;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:50px;
+      flex-wrap:wrap;
+      animation:surgir 1s ease;
+      box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .texto{
+      flex:1;
+      min-width:300px;
+    }
+
+    .texto h2{
+      font-size:50px;
+      margin-bottom:20px;
+    }
+
+    .texto p{
+      line-height:1.9;
+      font-size:19px;
+    }
+
+    .imagem {
+      flex:1;
+      min-width:300px;
+      height:350px;
+      background:rgba(255,255,255,0.2);
+      border:3px dashed white;
+      border-radius:30px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:24px;
+      font-weight:600;
+      overflow: hidden; /* Mantém a imagem dentro do limite tracejado */
+    }
+
+    /* Nova regra adicionada para o encaixe perfeito das imagens */
+    .foto img, .imagem img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    .aviso{
+      margin-top:90px;
+      background:white;
+      padding:50px;
+      border-radius:35px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      text-align:center;
+      animation:surgir 1s ease;
+    }
+
+    .aviso h2{
+      color:#1b6d31;
+      font-size:42px;
+      margin-bottom:20px;
+    }
+
+    .aviso p{
+      color:#555;
+      line-height:1.9;
+      font-size:18px;
+      max-width:900px;
+      margin:auto;
+    }
+
+    footer{
+      background:#145526;
+      color:white;
+      text-align:center;
+      padding:40px 20px;
+    }
+
+    footer h3{
+      margin-bottom:15px;
+      font-size:24px;
+    }
+
+    footer p{
+      font-size:16px;
+      opacity:0.9;
+    }
+
+    @keyframes subir{
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes surgir{
+      from {
+        opacity: 0;
+        transform: scale(0.98) translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero h1{
+        font-size:45px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .texto h2{
+        font-size:38px;
+      }
+
+      .destaque{
+        padding:40px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      nav{
+        position: static;
+        transform: none;
+        margin-bottom: 20px;
+      }
+
+      nav ul{
+        flex-wrap: wrap;
+        justify-content:center;
+      }
+
+      section{
+        padding:60px 8%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="hero">
+      <h1>Notícias da Escola Sementinha</h1>
+      <p>Fique por dentro das últimas novidades, eventos e conquistas da nossa comunidade escolar.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="titulo">
+      <h2>Últimas notícias</h2>
+      <p>Confira as novidades que estão movimentando nosso dia a dia na escola.</p>
+    </div>
+
+    <div class="noticias">
+      <article class="noticia">
+        <div class="foto"><img src="ciencias.jpeg" alt="Feira de Ciências"></div>
+        <div class="conteudo">
+          <span class="data">24 de junho de 2026</span>
+          <h3>Feira de Ciências inspira nossos pequenos</h3>
+          <p>Alunos apresentaram projetos criativos com muita empolgação e demonstraram curiosidade científica em todas as salas.</p>
+        </div>
+      </article>
+
+      <article class="noticia">
+        <div class="foto"><img src="plantas.jpeg" alt="Visita ao Jardim Botânico"></div>
+        <div class="conteudo">
+          <span class="data">18 de junho de 2026</span>
+          <h3>Trabalho sobre plantas ajudando o planeta</h3>
+          <p>A turminha conheceu plantas, flores e animais, aprendendo como a vida ao redor de nós é importante e preciosa.</p>
+        </div>
+      </article>
+
+      <article class="noticia">
+        <div class="foto"><img src="picapau.jpeg" alt="Mostra Cultural"></div>
+        <div class="conteudo">
+          <span class="data">10 de junho de 2026</span>
+          <h3>Mostra cultural celebra a diversidade escolar</h3>
+          <p>Famílias, professores e alunos celebraram com apresentações, música e arte, fortalecendo nossa comunidade.</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="destaque">
+      <div class="texto">
+        <h2>Conectados com cada etapa do crescimento</h2>
+        <p>No nosso espaço, desenvolvemos atividades que valorizam o aprendizado, a autoestima e o respeito entre todos.</p>
+      </div>
+      <div class="imagem"><img src="brasil.jpeg" alt="Brasil"></div>
+    </div>
+
+    <div class="aviso">
+      <h2>Programe sua visita</h2>
+      <p>As matrículas para o próximo semestre são limitadas. Entre em contato e agende uma visita para conhecer nossa escola e descobrir como podemos apoiar o desenvolvimento do seu filho.</p>
+    </div>
+  </section>
+
+  <footer>
+    <h3>Escola Sementinha</h3>
+    <p>Educação com carinho, segurança e atenção ao desenvolvimento de cada aluno.</p>
+  </footer>
+</body>
+</html>

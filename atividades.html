@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ensino - Escola Sementinha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* CORREÇÕES E BASE */
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#f4fff5;
+      color:#1e1e1e;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
+    }
+
+    header{
+      width:100%;
+      height:60vh;
+      background:linear-gradient(135deg,#1b6d31,#61d882);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero{
+      color:white;
+      animation:subir 1.2s ease;
+    }
+
+    .hero h1{
+      font-size:65px;
+      margin-bottom:20px;
+      text-shadow:0 5px 10px rgba(0,0,0,0.2);
+    }
+
+    .hero p{
+      font-size:22px;
+      max-width:850px;
+      line-height:1.8;
+    }
+
+    section{
+      padding:90px 10%;
+    }
+
+    .titulo-secao {
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .titulo-secao h2{
+      font-size:45px;
+      color:#1b6d31;
+      margin-bottom:15px;
+    }
+
+    .titulo-secao p{
+      color:#666;
+      font-size:18px;
+    }
+
+    /* ESTRUTURA DA ABA 1: METODOLOGIA (CARDS EM GRID) */
+    .grid-cards {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:35px;
+    }
+
+    .card-generico {
+      background:white;
+      border-radius:30px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      transition:0.5s;
+      animation:surgir 1s ease;
+    }
+
+    .card-generico:hover {
+      transform:translateY(-10px) scale(1.02);
+      box-shadow:0 20px 40px rgba(0,0,0,0.15);
+    }
+
+    .container-foto-card {
+      width: 100%;
+      height: 240px; 
+      overflow: hidden; 
+    }
+
+    .container-foto-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+      object-position: center;
+      display: block;
+    }
+
+    .conteudo-card {
+      padding:30px;
+    }
+
+    .conteudo-card h3 {
+      color:#1b6d31;
+      margin-bottom:15px;
+      font-size:26px;
+    }
+
+    .conteudo-card p {
+      color:#555;
+      line-height:1.8;
+      font-size:15px;
+    }
+
+    /* ESTRUTURA DA ABA 2: ATIVIDADES (NOVO LAYOUT EM LINHAS ALTERNADAS) */
+    .secao-linhas-atividades {
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      margin-top: 40px;
+    }
+
+    .linha-atividade {
+      display: flex;
+      align-items: center;
+      background: white;
+      border-radius: 40px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+      transition: 0.5s;
+      animation: surgir 1s ease;
+    }
+
+    .linha-atividade:hover {
+      transform: scale(1.01);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    }
+
+    /* Inverte a ordem dos blocos automaticamente nas linhas pares (2ª linha) */
+    .linha-atividade:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+
+    /* Espaço seguro e travado para a foto da atividade */
+    .atividade-foto-wrapper {
+      flex: 1;
+      height: 320px; /* Altura ideal fixa */
+      overflow: hidden; /* Corta o que sobrar nas bordas arredondadas do pai */
+      position: relative; /* Garante estabilidade nas dimensões */
+    }
+
+    /* Trava de segurança para as imagens não fugirem de jeito nenhum */
+    .atividade-foto-wrapper img {
+      width: 100%;
+      height: 100%;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: cover; /* Adapta a foto proporcionalmente sem distorcer */
+      object-position: center;
+      display: block;
+    }
+
+    /* Espaço para o texto explicativo ao lado da foto */
+    .atividade-texto-wrapper {
+      flex: 1;
+      padding: 50px;
+    }
+
+    .atividade-texto-wrapper h3 {
+      color: #1b6d31;
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    .atividade-texto-wrapper p {
+      color: #555;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* OUTROS COMPONENTES */
+    .banner-destaque {
+      margin-top: 90px;
+      background: linear-gradient(135deg,#2e9b47,#61d882);
+      border-radius: 40px;
+      padding: 60px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      flex-wrap: wrap;
+      animation: surgir 1s ease;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .banner-texto {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .banner-texto h2 {
+      font-size: 50px;
+      margin-bottom: 20px;
+    }
+
+    .banner-texto p {
+      line-height: 1.9;
+      font-size: 18px;
+    }
+
+    .banner-container-foto {
+      flex: 1;
+      min-width: 300px;
+      height: 350px;         
+      border-radius: 30px;   
+      overflow: hidden;      
+      border: 3px dashed #ffffff;
+      background: rgba(255,255,255,0.1);
+    }
+
+    .banner-container-foto img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .beneficios {
+      margin-top: 90px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+      gap: 30px;
+    }
+
+    .beneficio {
+      background: white;
+      padding: 35px;
+      border-radius: 30px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transition: 0.5s;
+    }
+
+    .beneficio h3 { color: #1b6d31; font-size: 24px; margin-bottom: 10px; }
+    .beneficio p { color: #666; font-size: 14px; }
+
+    footer{
+      background: #145526;
+      color: white;
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 90px;
+    }
+
+    @keyframes surgir{ from{ opacity:0; transform:translateY(40px); } to{ opacity:1; transform:translateY(0); } }
+    @keyframes subir{ from{ opacity:0; transform:translateY(30px); } to{ opacity:1; transform:translateY(0); } }
+
+    /* RESPONSIVIDADE PARA CELULARES */
+    @media(max-width:768px){
+      .hero h1{ font-size: 40px; }
+      .banner-texto h2{ font-size: 32px; }
+      section{ padding: 60px 5%; }
+      
+      /* Força as linhas a virarem colunas normais em telas pequenas */
+      .linha-atividade, .linha-atividade:nth-child(even) {
+        flex-direction: column;
+      }
+      .atividade-foto-wrapper {
+        width: 100%;
+        height: 250px; /* Reduz ligeiramente a altura da imagem no celular para manter harmonia */
+      }
+      .atividade-texto-wrapper {
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hero">
+      <h1>Nossas Atividades</h1>
+      <p>Unindo aprendizado, valores e criatividade para preparar nossos alunos para o futuro.</p>
+    </div>
+  </header>
+
+  <section>
+
+    <div class="titulo-secao" style="margin-top: 110px;">
+      <h2>Vivências e Rotina Escolar</h2>
+      <p>Projetos práticos e momentos especiais que dão vida ao dia a dia dos nossos pequenos.</p>
+    </div>
+
+    <div class="secao-linhas-atividades">
+
+      <div class="linha-atividade">
+        <div class="atividade-foto-wrapper">
+          <img src="ciencias.jpeg" alt="Mundo Científico">
+        </div>
+        <div class="atividade-texto-wrapper">
+          <h3>Mundo Científico e Descobertas</h3>
+          <p>Aqui a curiosidade ganha espaço! Incentivamos nossos alunos a investigarem o mundo ao redor por meio de experimentos em sala de aula, feiras científicas e observações diretas da natureza, tornando a ciência algo prático e fascinante.</p>
+        </div>
+      </div>
+
+      <div class="linha-atividade">
+        <div class="atividade-foto-wrapper">
+          <img src="copadomundo.jpeg" alt="Projetos Culturais">
+        </div>
+        <div class="atividade-texto-wrapper">
+          <h3>Projetos Culturais e Integração</h3>
+          <p>Acreditamos na importância da socialização. Nossas gincanas, celebrações de datas festivas e eventos culturais são planejados para fortalecer a empatia, criar memórias incríveis e desenvolver o trabalho em equipe desde cedo.</p>
+        </div>
+      </div>
+
+      <div class="linha-atividade">
+        <div class="atividade-foto-wrapper">
+          <img src="leitura.jpeg" alt="Clube da Leitura">
+        </div>
+        <div class="atividade-texto-wrapper">
+          <h3>Momento Lúdico da Leitura</h3>
+          <p>Através de rodas de contação de histórias bem dinâmicas, despertamos o amor pelos livros. Esse hábito estende a criatividade, melhora a comunicação das crianças e ajuda na construção de um vocabulário muito mais rico.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="banner-destaque">
+      <div class="banner-texto">
+        <h2>Educação além da sala de aula</h2>
+        <p>Acreditamos na formação integral. Nosso ensino incentiva a autonomia, o respeito e a busca constante pelo conhecimento.</p>
+      </div>
+      <div class="banner-container-foto">
+        <img src="balett.jpg" alt="Atividade de Balé">
+      </div>
+    </div>
+
+    <div class="beneficios">
+      <div class="beneficio"><h3>🎵 Música</h3><p>Estimula sensibilidade e coordenação motora.</p></div>
+      <div class="beneficio"><h3>🥋 Judô</h3><p>Foco na disciplina e no respeito mútuo.</p></div>
+      <div class="beneficio"><h3>🩰 Balé</h3><p>Incentivo à postura, equilíbrio e dedicação.</p></div>
+      <div class="beneficio"><h3>📚 Tradicional</h3><p>Base sólida em todas as matérias fundamentais.</p></div>
+    </div>
+
+  </section>
+
+  <footer>
+    <h3>Escola Sementinha</h3>
+    <p>Educação que transforma vidas 🌱</p>
+  </footer>
+
+</body>
+</html>

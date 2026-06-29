@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escola Sementinha</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Poppins', sans-serif;
+    }
+
+    body{
+      background:#f4fff5;
+      color:#1e1e1e;
+      overflow-x:hidden;
+    }
+
+    header{
+      width:100%;
+      min-height:100vh;
+      background:linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('SUA-IMAGEM-AQUI.jpg');
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:20px;
+    }
+
+    .hero{
+      color:white;
+      max-width:800px;
+      animation:fadeIn 1.5s ease;
+    }
+
+    .hero h1{
+      font-size:70px;
+      margin-bottom:20px;
+      text-shadow:0 5px 10px rgba(0,0,0,0.4);
+    }
+
+    .hero p{
+      font-size:22px;
+      line-height:1.7;
+      margin-bottom:35px;
+    }
+
+    .hero button{
+      padding:15px 35px;
+      border:none;
+      border-radius:50px;
+      background:#2e9b47;
+      color:white;
+      font-size:18px;
+      cursor:pointer;
+      transition:0.4s;
+      box-shadow:0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    .hero button:hover{
+      transform:translateY(-5px) scale(1.05);
+      background:#207636;
+    }
+
+    section{
+      padding:90px 10%;
+    }
+
+    .titulo{
+      text-align:center;
+      margin-bottom:60px;
+    }
+
+    .titulo h2{
+      font-size:45px;
+      color:#1e7a34;
+      margin-bottom:15px;
+    }
+
+    .titulo p{
+      color:#555;
+      font-size:18px;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:white;
+      border-radius:25px;
+      overflow:hidden;
+      box-shadow:0 10px 30px rgba(0,0,0,0.08);
+      transition:0.5s;
+      position:relative;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .foto{
+      width:100%;
+      height:230px;
+      background:#d8f7df;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#2e9b47;
+      font-size:22px;
+      font-weight:600;
+    }
+
+    .conteudo{
+      padding:30px;
+    }
+
+    .conteudo h3{
+      color:#1f7d37;
+      margin-bottom:15px;
+      font-size:28px;
+    }
+
+    .conteudo p{
+      color:#555;
+      line-height:1.8;
+      font-size:16px;
+    }
+
+    .destaque{
+      background:linear-gradient(135deg,#2e9b47,#5bcf77);
+      border-radius:35px;
+      color:white;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:50px;
+      flex-wrap:wrap;
+      padding:60px;
+      box-shadow:0 15px 40px rgba(0,0,0,0.15);
+    }
+
+    .texto-destaque{
+      flex:1;
+      min-width:300px;
+    }
+
+    .texto-destaque h2{
+      font-size:50px;
+      margin-bottom:20px;
+    }
+
+    .texto-destaque p{
+      font-size:19px;
+      line-height:1.9;
+    }
+
+    .imagem-destaque{
+      flex:1;
+      min-width:300px;
+      height:350px;
+      border-radius:30px;
+      background:rgba(255,255,255,0.2);
+      border:3px dashed white;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:25px;
+      font-weight:600;
+    }
+
+    .galeria{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px,1fr));
+      gap:25px;
+    }
+
+    .galeria .item{
+      height:250px;
+      border-radius:25px;
+      background:#d8f7df;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      color:#2e9b47;
+      font-size:22px;
+      font-weight:600;
+      transition:0.5s;
+    }
+
+    .galeria .item:hover{
+      transform:scale(1.03);
+    }
+
+    footer{
+      background:#145526;
+      color:white;
+      text-align:center;
+      padding:40px 20px;
+      margin-top:60px;
+    }
+
+    footer h3{
+      font-size:32px;
+      margin-bottom:15px;
+    }
+
+    footer p{
+      font-size:17px;
+      opacity:0.9;
+    }
+
+    @keyframes fadeIn{
+      from{
+        opacity:0;
+        transform:translateY(30px);
+      }
+      to{
+        opacity:1;
+        transform:translateY(0);
+      }
+    }
+
+    @media (max-width:768px) {
+      .hero h1{
+        font-size:45px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .titulo h2{
+        font-size:35px;
+      }
+
+      .texto-destaque h2{
+        font-size:35px;
+      }
+
+      .destaque{
+        padding:35px;
+      }
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .bloco-foto-turma {
+      width: 100%;
+      height: 300px;
+      background-color: #e2f7e6;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    .foto-turma {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+   
+.foto {
+    width: 100%;
+    height: 200px; 
+    overflow: hidden; 
+}
+
+
+.foto-card {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    object-position: center;
+}
+.cards {
+    display: flex;            
+    justify-content: space-between; 
+    gap: 20px;                
+    width: 100%;              
+}
+
+.card {
+    flex: 1;                 
+    min-width: 250px;         
+}
+.galeria .item {
+    position: relative;
+    overflow: hidden;         
+    border-radius: 20px;      
+    height: 250px;            
+}
+
+.foto-galeria {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        
+    object-position: center;   
+    display: block;
+}
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="hero">
+      <h1>Escola Sementinha</h1>
+      <p>
+        Cultivando sonhos, conhecimento e valores para formar alunos preparados para o futuro.
+      </p>
+
+      <button>Conheça Nossa Escola</button>
+    </div>
+  </header>
+
+  <section>
+    <div class="titulo">
+      <h2>Por que escolher o Sementinha?</h2>
+      <p>Uma escola feita com carinho, dedicação e ensino de qualidade.</p>
+    </div>
+
+    <div class="cards">
+
+      <div class="card">
+        <div class="foto">
+           <img src="foradaescola.jpg.jpg" alt="Foto dos Alunos">
+          </div>
+
+        <div class="conteudo">
+          <h3>Estrutura Completa</h3>
+          <p>
+            Nossa escola oferece um ambiente moderno, seguro e preparado para receber os alunos com conforto. Contamos com salas organizadas, espaços recreativos e ambientes que estimulam o aprendizado e o desenvolvimento.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="foto">
+            <img src="foto dos alunos.jpeg" alt="Foto dos Alunos">
+          </div>
+
+        <div class="conteudo">
+          <h3>Ensino de Qualidade</h3>
+          <p>
+            Trabalhamos com uma metodologia dinâmica e acolhedora, incentivando o aprendizado de forma leve e eficiente. Nosso objetivo é desenvolver o potencial de cada aluno.
+          </p>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="foto">
+            <img src="Atividadesextras.jpg.jpg" alt="Foto das Atividades">
+          </div>
+
+        <div class="conteudo">
+          <h3>Atividades Especiais</h3>
+          <p>
+            Realizamos projetos pedagógicos, oficinas, eventos e atividades recreativas que tornam o aprendizado mais divertido e inesquecível para todos os estudantes.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="destaque">
+
+      <div class="texto-destaque">
+        <h2>Educação com amor e dedicação</h2>
+
+        <p>
+          A Escola Sementinha acredita que ensinar vai muito além da sala de aula. Nosso compromisso é formar cidadãos responsáveis, criativos e preparados para os desafios do futuro.
+          
+          Aqui cada aluno é incentivado a crescer, aprender e descobrir novas possibilidades em um ambiente acolhedor e cheio de oportunidades.
+        </p>
+      </div>
+   <div class="bloco-foto-turma">
+    <img src="foto da turma.jpeg" alt="Foto da Turma" class="foto-turma">
+</div>
+    </div>
+  </section>
+
+  <section>
+    <div class="titulo">
+      <h2>Momentos Especiais</h2>
+      <p>Adicione aqui fotos dos eventos, projetos e passeios da escola.</p>
+    </div>
+<div class="galeria">
+
+  <div class="item">
+    <img src="momentosespeciais1.jpg" alt="Momento Especial 1" class="foto-galeria">
+  </div>
+
+  <div class="item">
+    <img src="momentoespecial2.jpg" alt="Momento Especial 2" class="foto-galeria">
+  </div>
+
+  <div class="item">
+    <img src="momentoespecial3.jpg" alt="Momento Especial 3" class="foto-galeria">
+  </div>
+
+  <div class="item">
+    <img src="momentosespeciais4.jpg" alt="Momento Especial 4" class="foto-galeria">
+  </div>
+
+</div>
+  </section>
+
+  <footer>
+    <h3>Escola Sementinha</h3>
+    <p>
+      Educação que transforma vidas 🌱
+    </p>
+  </footer>
+
+</body>
+</html>
